@@ -16,8 +16,7 @@ jobs:
       - name: Set up Python
         uses: actions/setup-python@v4
         with:
-        python-version: '3.10'  # ✅ Use 3.10 or 3.11 instead of 3.1
-
+          python-version: '3.10'  # ✅ Use 3.10 or 3.11 instead of 3.1
 
       - name: Install dependencies
         run: pip install -r requirements.txt || true
@@ -30,7 +29,7 @@ jobs:
           GH_TOKEN: ${{ secrets.GH_PAT }}
         run: |
           git config user.name "Satya Prabhu"
-          git config user.email "bsatyaprabhu1@gmail.com"  # Put your email here
+          git config user.email "bsatyaprabhu1@gmail.com"
           git remote set-url origin https://x-access-token:${GH_TOKEN}@github.com/${{ github.repository }}
           git add .
           git commit -m "🔁 Auto-generate index.html" || echo "No changes to commit"
