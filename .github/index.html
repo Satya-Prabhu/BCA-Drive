@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>.github</title>
+  <style>
+    :root {
+      --bg-color: #DFD0B8 ;
+      --card-color: #D1D8BE;
+      --hover-color: #A7C1A8;
+      --text-color: #222831;
+      --button-bg: #819A91;
+      --button-text: #ffffff;
+      --button-hover: #A7C1A8;
+    }
+    
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background-color: var(--bg-color);
+      color: var(--text-color);
+      padding: 2rem;
+    }
+    
+    h1 {
+      text-align: center;
+      margin-bottom: 2rem;
+      word-break: break-word;
+    }
+    
+    .nav-buttons {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      margin-bottom: 2rem;
+      flex-wrap: wrap;
+    }
+    
+    .nav-button {
+      background-color: var(--button-bg);
+      color: var(--button-text);
+      padding: 0.7rem 1.4rem;
+      border: none;
+      border-radius: 8px;
+      font-size: 1rem;
+      text-decoration: none;
+      transition: background-color 0.2s, transform 0.2s;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+    }
+    
+    .nav-button:hover {
+      background-color: var(--button-hover);
+      transform: translateY(-2px);
+    }
+    
+    .file-list {
+      max-width: 700px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+    
+    .file-link {
+      display: flex;
+      align-items: center;
+      background-color: var(--card-color);
+      padding: 1rem;
+      border-radius: 12px;
+      text-decoration: none;
+      color: var(--text-color);
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      transition: background-color 0.2s, transform 0.2s;
+      flex-wrap: wrap;
+    }
+    
+    .file-link:hover {
+      background-color: var(--hover-color);
+      transform: translateY(-2px);
+    }
+    
+    .folder-icon,
+    .file-icon {
+      margin-right: 1rem;
+      font-size: 1.5rem;
+    }
+    
+    .file-preview {
+      color: inherit;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      flex-grow: 1;
+      flex-wrap: wrap;
+      word-break: break-word;
+      font-weight: bold;
+    }
+    
+    /* Theme Switch */
+    /* The switch - the box around the slider */
+    .switch {
+      font-size: 17px;
+      position: relative;
+      display: inline-block;
+      width: 4em;
+      height: 2.2em;
+      border-radius: 30px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+    
+    /* Hide default HTML checkbox */
+    .switch input {
+      opacity: 0;
+      width: 0;
+      height: 0;
+    }
+    
+    /* The slider */
+    .slider {
+      position: absolute;
+      cursor: pointer;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-color: #2a2a2a;
+      transition: 0.4s;
+      border-radius: 30px;
+      overflow: hidden;
+    }
+    
+    .slider:before {
+      position: absolute;
+      content: "";
+      height: 1.2em;
+      width: 1.2em;
+      border-radius: 20px;
+      left: 0.5em;
+      bottom: 0.5em;
+      transition: 0.4s;
+      transition-timing-function: cubic-bezier(0.81, -0.04, 0.38, 1.5);
+      box-shadow: inset 8px -4px 0px 0px #fff;
+    }
+    
+    .switch input:checked + .slider {
+      background-color: #00a6ff;
+    }
+    
+    .switch input:checked + .slider:before {
+      transform: translateX(1.8em);
+      box-shadow: inset 15px -4px 0px 15px #ffcf48;
+    }
+    
+    .star {
+      background-color: #fff;
+      border-radius: 50%;
+      position: absolute;
+      width: 5px;
+      transition: all 0.4s;
+      height: 5px;
+    }
+    
+    .star_1 {
+      left: 2.5em;
+      top: 0.5em;
+    }
+    
+    .star_2 {
+      left: 2.2em;
+      top: 1.2em;
+    }
+    
+    .star_3 {
+      left: 3em;
+      top: 0.9em;
+    }
+    
+    .switch input:checked ~ .slider .star {
+      opacity: 0;
+    }
+    
+    .cloud {
+      width: 3.5em;
+      position: absolute;
+      bottom: -1.4em;
+      left: -1.1em;
+      opacity: 0;
+      transition: all 0.4s;
+    }
+    
+    .switch input:checked ~ .slider .cloud {
+      opacity: 1;
+    }
+    
+    /* From Uiverse.io by vinodjangid07 */ 
+    .Btn {
+      width: 30px;
+      height: 30px;
+      border: none;
+      border-radius: 50%;
+      background-color: rgb(27, 27, 27);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      position: relative;
+      transition-duration: .3s;
+      box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.11);
+      margin-left: auto;
+    }
+    
+    .svgIcon {
+      fill: rgb(214, 178, 255);
+    }
+    
+    .icon2 {
+      width: 18px;
+      height: 5px;
+      border-bottom: 2px solid rgb(182, 143, 255);
+      border-left: 2px solid rgb(182, 143, 255);
+      border-right: 2px solid rgb(182, 143, 255);
+    }
+    
+    .tooltip {
+      position: absolute;
+      left: -110px; /* instead of right */
+      top: 50%;
+      transform: translateY(-50%);
+      opacity: 0;
+      background-color: rgb(12, 12, 12);
+      color: white;
+      padding: 5px 10px;
+      border-radius: 5px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition-duration: 0.2s;
+      pointer-events: none;
+      letter-spacing: 0.5px;
+      white-space: nowrap;
+      z-index: 2;
+    }
+    
+    .tooltip::before {
+      content: "";
+      position: absolute;
+      top: 50%;
+      right: -5px; /* now pointing from right side */
+      transform: translateY(-50%) rotate(45deg);
+      width: 10px;
+      height: 10px;
+      background-color: rgb(12, 12, 12);
+      transition-duration: 0.3s;
+    }
+    
+    
+    .Btn:hover .tooltip {
+      opacity: 1;
+      transition-duration: .3s;
+    }
+    
+    .Btn:hover {
+      background-color: rgb(150, 94, 255);
+      transition-duration: .3s;
+    }
+    
+    .Btn:hover .icon2 {
+      border-bottom: 2px solid rgb(235, 235, 235);
+      border-left: 2px solid rgb(235, 235, 235);
+      border-right: 2px solid rgb(235, 235, 235);
+    }
+    
+    .Btn:hover .svgIcon {
+      fill: rgb(255, 255, 255);
+      animation: slide-in-top 0.6s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+    }
+    
+    @keyframes slide-in-top {
+      0% {
+        transform: translateY(-10px);
+        opacity: 0;
+      }
+      
+      100% {
+        transform: translateY(0px);
+        opacity: 1;
+      }
+    }
+    
+    @media (max-width: 600px) {
+      .Btn {
+        align-self: flex-end;
+        margin-top: 0.5rem;
+      }
+      
+      .tooltip {
+        left: auto;
+        right: 60px;
+        top: 50%;
+        transform: translateY(-50%);
+      }
+      
+      .tooltip::before {
+        right: -5px;
+        left: auto;
+        top: 50%;
+        transform: translateY(-50%) rotate(45deg);
+      }
+    }
+    
+    
+    
+    /* Dark mode */
+    .dark-mode {
+      --bg-color: #1f1f1f;
+      --text-color: #ffffff;
+      --card-color: #2b2b2b;
+      --hover-color: #3a3a3a;
+      --button-bg: #3390ff;
+      --button-text: #ffffff;
+      --button-hover: #2674cc;
+    }
+    
+    @media (max-width: 600px) {
+      body {
+        padding: 1rem;
+      }
+      
+      .file-link {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      
+      .download-button {
+        align-self: flex-end;
+        margin-top: 0.5rem;
+        margin-left: 0;
+      }
+    }
+  </style>
+  
+  <script>
+    function toggleTheme() {
+      const html = document.documentElement;
+      const isDark = html.classList.toggle('dark-mode');
+      localStorage.setItem('theme', isDark ? 'dark' : 'light');
+      const checkbox = document.getElementById('checkbox');
+      if (checkbox) checkbox.checked = isDark;
+    }
+    
+    // Apply saved theme on load
+    window.addEventListener("DOMContentLoaded", () => {
+      const isDark = localStorage.getItem("theme") === "dark";
+      if (isDark) {
+        document.documentElement.classList.add("dark-mode");
+      }
+      const checkbox = document.getElementById("checkbox");
+      if (checkbox) checkbox.checked = isDark;
+    });
+  </script>
+  
+</head>
+
+<body>
+  
+  <label class="switch">
+    <input id="checkbox" type="checkbox" onchange="toggleTheme()" />
+    <span class="slider">
+      <div class="star star_1"></div>
+      <div class="star star_2"></div>
+      <div class="star star_3"></div>
+      <svg viewBox="0 0 16 16" class="cloud_1 cloud">
+        <path
+        transform="matrix(.77976 0 0 .78395-299.99-418.63)"
+        fill="#fff"
+        d="m391.84 540.91c-.421-.329-.949-.524-1.523-.524-1.351 0-2.451 1.084-2.485 2.435-1.395.526-2.388 1.88-2.388 3.466 0 1.874 1.385 3.423 3.182 3.667v.034h12.73v-.006c1.775-.104 3.182-1.584 3.182-3.395 0-1.747-1.309-3.186-2.994-3.379.007-.106.011-.214.011-.322 0-2.707-2.271-4.901-5.072-4.901-2.073 0-3.856 1.202-4.643 2.925"
+        ></path>
+      </svg>
+    </span>
+  </label>
+  
+  
+  <h1>📁 .github</h1>
+  
+  <!-- Show navigation only in subfolders -->
+  <div class="nav-buttons" id="navBar" style="display: none;">
+    <a href="/BCA/" class="nav-button">🏠 Home</a>
+    <a href="../" class="nav-button">⬅ Back</a>
+  </div>
+  
+  <div class="file-list">
+    <div class="file-link">
+          <a href="workflows/" class="file-preview">
+            <span class="folder-icon">📂</span> workflows
+          </a>
+          
+        </div>
+  </div>
+  
+  <script>
+    // Hide nav buttons on root (BCA Drive)
+    if (document.title !== "BCA Drive") {
+      document.getElementById("navBar").style.display = "flex";
+    }
+  </script>
+  
+</body>
+</html>
