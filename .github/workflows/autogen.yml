@@ -1,4 +1,4 @@
-name: Auto-generate Index Pages
+name: Auto Generate Index
 
 on:
   push:
@@ -10,21 +10,29 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Checkout repo
-      uses: actions/checkout@v3
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: false  # ✅ This line is CRUCIAL!
 
-    - name: Set up Python
-      uses: actions/setup-python@v4
-      with:
-        python-version: 3.10
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.10'
 
-    - name: Run generate.py
-      run: python generate.py
+      - name: Install dependencies
+        run: pip install -r requirements.txt || true
 
-    - name: Commit and push changes
-      run: |
-        git config user.name "github-actions[bot]"
-        git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-        git add .
-        git diff --cached --quiet || git commit -m "🔁 Auto-generate index.html"
-        git push
+      - name: Run generate.py
+        run: python generate.py
+
+      - name: Commit and push changes
+        env:
+          GH_TOKEN: ${{ secrets.GH_PAT }}
+        run: |
+          git config user.name "Satya Prabhu"
+          git config user.email "bsatyaprabhu1@gmail.com"
+          git remote set-url origin https://x-access-token:${GH_TOKEN}@github.com/${{ github.repository }}
+          git add .
+          git commit -m "🔁 Auto-generate index.html" || echo "No changes to commit"
+          git push origin main

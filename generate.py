@@ -55,7 +55,7 @@ def generate_index(folder: Path, template: str, is_root=False):
     print(f"✅ index.html generated in: {folder}")
 
 def main():
-    base = Path(".")
+    base = Path(".").resolve()
     template_path = base / "template.html"
 
     if not template_path.exists():
@@ -65,8 +65,16 @@ def main():
     template = load_template()
 
     for folder in base.glob("**/"):
-        if folder.is_dir():
-            generate_index(folder, template, is_root=(folder == base))
+        if not folder.is_dir():
+            continue
+
+        # ❌ Skip .github and its subfolders
+        if ".github" in folder.parts:
+            continue
+
+        is_root = (folder.resolve() == base)
+        generate_index(folder, template, is_root=is_root)
+
 
 if __name__ == "__main__":
     main()
