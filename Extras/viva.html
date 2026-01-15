@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Question Answers - Satya Prabhu</title>
+
+    <style>
+        /* PRINT SETTINGS */
+        @page {
+            size: A4 landscape;
+            margin: 25mm;
+        }
+
+        * {
+            -webkit-print-color-adjust: exact !important;
+            print-color-adjust: exact !important;
+        }
+
+        body {
+            font-family: 'Times New Roman', Times, serif;
+            font-size: 11pt;
+            line-height: 1.6;
+            color: #000;
+        }
+
+        /* HEADER SECTION (FULL WIDTH) */
+        .header {
+            text-align: center;
+            margin-bottom: 10px;
+            column-span: all;
+        }
+
+        .subject {
+            font-size: 17pt;
+            font-weight: bold;
+        }
+
+        .name {
+            text-align: right;
+            font-size: 10pt;
+            margin-top: 5px;
+        }
+
+        hr {
+            margin: 10px 0;
+        }
+
+        /* MAIN CONTENT – TWO COLUMNS */
+        .content {
+            column-count: 2;
+            column-gap: 30px;
+            margin-top: 30px;
+        }
+
+        /* QUESTION BLOCK */
+        .question {
+            margin-bottom: 15px;
+            break-inside: auto;
+        }
+
+        .q {
+            display: inline-block;
+            background: rgb(251, 241, 149);
+            font-weight: bold;
+        }
+
+        .answer {
+            margin-top: 5px;
+            text-align: justify;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- HEADER -->
+    <div class="header">
+        <div class="subject">
+            <div>Subject-Code</div> “Subject-Name”
+        </div>
+        <hr>
+        <div class="name">~ Satya Prabhu</div>
+    </div>
+
+    <!-- TWO COLUMN CONTENT -->
+    <div class="content">
+
+        <div class="question">
+            <div class="q">1. What is AngularJS and why is it used?</div>
+            <div class="answer">
+                AngularJS is an open-source JavaScript framework developed by Google for building dynamic Single Page
+                Applications (SPAs). It extends HTML with additional features such as data binding, directives, and
+                dependency injection, making web applications faster, structured, and easier to maintain.
+            </div>
+        </div>
+
+        <div class="question">
+            <div class="q">2. Explain the MVC architecture in AngularJS.</div>
+            <div class="answer">
+                MVC stands for Model, View, and Controller. In AngularJS, the Model represents application data, the
+                View is the user interface written in HTML, and the Controller controls the interaction between Model
+                and View. AngularJS follows a modified MVC approach closer to MVVM, where data binding keeps the model
+                and view synchronized automatically.
+            </div>
+        </div>
+
+    </div>
+
+</body>
+
+</html>
