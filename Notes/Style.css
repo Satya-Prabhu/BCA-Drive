@@ -1,0 +1,297 @@
+
+/* Element selector */
+div{
+    background-color: yellow;
+}
+
+/* Class selector */
+.red{
+    background-color: red;
+}
+
+/* ID selector */
+#green{
+    background-color: green;
+}
+
+/* Child selector */
+div > p{
+    background-color: pink;
+    color: brown;
+}
+
+/* Descendent selector */
+div p{
+    background-color: pink;
+    color: brown;
+}
+
+/* Universal selector */
+*{
+    margin: 0;
+    padding: 0;
+}
+
+/* Pseudo selector */
+p:first-child{                           /* odd | even | nth-child */
+    background-color: orange;
+}
+
+/* Pseudo Anchor selector */
+a:visited{
+    color: yellow;
+}
+a:link{
+    color: green;
+}
+a:active{
+    background-color: red;
+}
+a:hover{
+    cursor: pointer;                     /* Mouse cursor change - many types are there */
+}
+
+/* Box Model */
+content > Padding > Border > Margin
+*{
+    height: 0px;
+    width: 0px;                          /* Overlapping Margin Collapse */
+    padding: 0px;                        /* 0px | 0px 0px | 0px 0px 0px 0px */
+    margin: opx;                         /* all-4sides | Top-Bottom  Right-Left | Top  Rigth  Bottom  Left */
+    border: 0px solid black;           /* none | hidden | dotted | dashed | solid | double | groove | ridge | inset | outset */
+    box-sizing: border-box;              /* Height 200px = content + padding + border */ /* content-box | border-box */
+    border-radius: 50px;
+}
+
+/* Font Properties */
+*{
+    font-family: "Poppins", sans-serif;
+    font-size: 20px;                         /* px | pt | em | rem */
+    font-style: italic;                      /* italic | oblique */
+    font-weight: bolder;                     /* numeric values also */
+    line-height: normal;
+    letter-spacing: normal;
+}
+
+/* Text Properties */
+*{
+    text-transform: uppercase;           /* none | [ capitalize | uppercase | lowercase ] || full-width || full-size-kana | math-auto */
+    text-decoration: underline;
+    text-decoration-style: dotted;       /* solid | double | dotted | dashed | wavy */
+    text-decoration-color: blue;
+    text-decoration-thickness: 7px;
+    text-indent: 45px;
+    text-overflow: ellipsis;             /* [ clip | ellipsis | <string> ]{1,2} */
+    overflow: hidden;                    /* [ visible | hidden | clip | scroll | auto ]{1,2} */
+    word-break: break-all;               /* normal | break-all | keep-all | break-word | auto-phrase */
+    text-align: center;                  /* start | end | left | right | center | justify | match-parent */
+}
+
+/* Color Properties */
+*{
+    color: aquamarine;                           /* Color Keyword || Text Color */
+    color: #cb2092cd;                            /* HEX Color Code */
+    color: rgb(74, 168, 63);                     /* RGB Color Code (Red-Green-Blue) */
+    color: rgba(210, 40, 28, 0.587);             /* RGBA Color Code (Alpha/opacity) */
+    color: hsl(69, 70%, 52%);                    /* HSL Color Code (Hue-Saturation-Lightness) */
+    color: hsla(253, 70%, 52%, 0.502);           /* HSLA Color Code (Alpha/opacity) */
+    background-color: rgb(36, 161, 170);         /* Background Color */
+}
+
+/* CSS Specificity - Cascase Algorithm */
+!important > Inline Style > ID selector > Class / Attribute / Pseudo-class > Element selector > Universal selector
+10,000        1,000           100                   10                             1                  0           /* Points */
+Note: If specificity is same, the last style in the order will be applied
+
+/* CSS Sizing Units */
+(pixel) | (point) | (% of parent) | (parent-size) | (root-size) | (viewport-hieght) | (viewport-width) | (minimum-side) | (maximum-side)
+px        pt           %               em            rem               vh                  vw              vmin           vmax
+"vmin" is minimum display side, in PC vmin = vh & in mobile vmin = vw ; sameway "vmax" is maximum display side.
+
+/* CSS Display Property */
+.box {
+    display: none;             /* none | block | inline | inline-block | inline-flex | flex | grid | flow-root */ /* space & content both vanishes */
+    visibility: hidden;        /* space remains but content vanishes */
+}
+
+/* CSS Shadows */
+* {
+    box-shadow: h-offset v-offset blur spread color inset;       /* inset | offset */
+    text-shadow: h-offset v-offset blur color;
+    outline: width style color;                                  /* Similar to but not a Border */
+    outline-offset: 0px;                                         /* To give Outline distance from element */
+}
+
+/* List styles */
+li {
+    list-style: type position;                    
+    list-style: type;                             /* Value [Decimal,Alphabet,Roman,..] | url("") [for image] | Custom   */
+    list-style-position: position;                /* Offset (default) | Inset */
+}
+
+/* CSS Overflow */
+* {
+    overflow: auto auto;              /* overflow-x | overflow-y */ /* [ visible | hidden | clip | scroll | auto ]{1,2} */  
+    white-space: nowrap;              /* normal | pre | pre-wrap | pre-line | <'white-space-collapse'> || <'text-wrap-mode'> */
+    text-overflow: ellipsis;          /* [ clip | ellipsis | <string> ]{1,2} */
+}
+
+/* CSS Position */
+* {
+    position: static;                 /* static (default) | relative | absolute | sticky | fixed */
+    top: 0px;                         /* auto | <percentage> | <length> */
+    bottom: 0px;
+    right: 0px;
+    left: 0px;
+    z-index: 1;                       /* Back < default is 0 > Front */
+    /* Exception: transform, filter, or perspective properties can also make an element appear as positioned */
+    /* transform: translate(0); */ /* filter: invert(0); */  /* perspective: 0em; */
+}
+
+/* CSS Variables */
+:root {                                   /* Global scope */
+    --color: yellow;                    /* var(--color, blue) | <-use this and blue is fallback-value/backup color */
+    --size: 50px;                         /* size | opacity | url | numbers | strings */
+}
+li {                                      /* Local scope */ 
+    --color: pink;
+    background-color: var(--color);
+}
+
+/* CSS Media Query */
+@media not|only mediatype and (expressions) {        /* mediatype = all | screen | print | speech */
+    CSS-Code;                                        /* expressions = min-width | max-width | min-width and max-width | orientation */
+}
+
+/* Float & Clear */
+* {
+    float: left;                                     /* left | right */
+    clear: left;                                     /* left | right | both */
+    display: flow-root;                              /* parent container wrap the float element always */
+    overflow: auto;                                  /* same as flow-root */
+}
+
+/* Pseudo-element Selectors */
+.box:first-child {                               /* box as a first-cild */
+    background-color: lightcoral;
+}
+.box::first-line {                               /* box as a first-line */
+    color: #00008b;
+}
+.box::first-letter {                             /* box as a first-letter */
+    color: peru;
+}
+.box:nth-child(odd) {                            /* box as a nth-child */  /* numbers | odd | even */
+    background-color: pink;
+}
+.box:nth-last-child(1) {                         /* box as a nth-child from last */   /* numbers | odd | even */
+    background-color: palegoldenrod;
+}
+.boxes::before {                                 /* before the box's content */
+    content: "This is a before element";
+    color: aqua;
+}
+.boxes::after {                                  /* after the box's content */
+    content: "This is a after element";
+    color: brown;
+}
+::selection {                                    /* selected area with mouse */
+    background-color: black;
+    color: chocolate;
+}
+input::placeholder {
+    color: darkcyan;
+}
+
+/* CSS FlexBox */
+.container-parent {
+    display: flex;
+    justify-content: center;                  /* start | center | end | normal | flex-start | flex-end |  left | right | space-around | space-between | space-evenly */   /* Main Axis */
+    align-items: center;                      /* start | center | end | normal | flex-start | flex-end | self-start | self-start | baseline | anchor-center | stretch */   /* Cross Axis || for single line */
+    align-content: center;                    /* start | center | end | normal | flex-start | flex-end | self-start | self-start | baseline | anchor-center | stretch */   /* Cross Axis || for mutli line*/
+    flex-direction: column;                   /* column | column-reverse | row | row-reverse */
+    flex-wrap: wrap;                          /* wrap | wrap-reverse | no-wrap */
+    flex-flow: felx-direction flex-wrap;
+    gap: row-gap column-gap;                  /* if row-gap = column-gap then gap: 30px; */
+}
+.item-child {
+    order: n;                   /* Start < default is 0 > End */
+    flex-grow: n;               /* n times growth || default is 0 */
+    flex-shrink: n;             /* n times shrink || default is 0 */
+    align-self: flex-end;       /* start | center | end | normal | flex-start | flex-end | baseline | anchor-center | stretch */
+}
+
+/* CSS Grid */
+.container-parent {
+    display: grid;
+    grid-template-columns: 50px 50px 50px;        /* px | fr | minmax(min, max) | repeat(times, size) | [line-name] size */
+    grid-template-rows: 50px 50px 50px;           /* px | fr | minmax(min, max) | repeat(times, size) | [line-name] size */
+    grid-template-areas: "name name name"         /* access it in .item-child by grid-area: name;  */
+    gap: row-gap column-gap;                      /* if row-gap = column-gap then gap: 30px; */
+    justify-items: center;                        /* start | center | end | normal | flex-start | flex-end |  left | right | space-around | space-between | space-evenly */    /* Main Axis || inside grid cell */
+    justify-content: center;                      /* start | center | end | normal | flex-start | flex-end |  left | right | space-around | space-between | space-evenly */    /* Main Axis || entire grid, if area of grid < container */
+    align-items: center;                          /* start | center | end | normal | flex-start | flex-end | self-start | self-start | baseline | anchor-center | stretch */   /* Cross Axis || inside grid cell */
+    align-content: center;                        /* start | center | end | normal | flex-start | flex-end | self-start | self-start | baseline | anchor-center | stretch */   /* Cross Axis || entire grid, if area of grid < container */
+    place-items: center;                          /* justify-items & align-items */
+    place-content: center;                        /* justify-content & align-content */
+}
+.item-child {                                              /* can overlap n no.of items */
+    grid-row: grid-row-start/grid-row-end;                 /* line-number (+ve/-ve) | line-name */
+    grid-column: grid-column-start/grid-column-end;        /* line-number (+ve/-ve) | line-name */
+    justify-self: flex-end;                                /* start | center | end | normal | flex-start | flex-end | baseline | anchor-center | stretch */   /* Main Axis || individual item */
+    align-self: flex-end;                                  /* start | center | end | normal | flex-start | flex-end | baseline | anchor-center | stretch */   /* Cross Axis || individual item */
+}
+
+/* CSS Tranform */
+* {
+    transform: translate();                                   /* values = 50% | 4px | 3in | 2em || translateX() | translateY() | translateZ() | translate3d() */
+    transform: rotate();                                      /* values = 90deg | 0.25turn || rotateX() | rotateY() | rotateZ() | rotate3d() */
+    transform: skew();                                        /* values = 30deg | 1.07rad  || skewX() | skewY() */
+    transform: scale();                                       /* scaleX() | scaleY() | scaleZ() | scale3d() */
+    transform: matrix();                                      /* matrix3d() */
+    transform: perspective();                                 /* values = 13px */
+    transform: translate() rotate() perspective();            /* Multiple function values, any 3 max */
+}
+
+/* CSS Transitions */
+* {
+    transition-property: property;                             /* property, property,... || all */
+    transition-duration: time;                                 /* in s & ms */
+    transition-timing-function: animation;                     /* all available animations || custom */
+    transition-delay: time;                                    /* in s & ms */
+    transition: property duration timing-function delay;       /* all 4 together separated by spaces */
+}
+
+/* CSS Animations */
+@keyframes slide {
+    from { transform: translateX(-100%); }
+    to { transform: translateX(0); }
+}
+.element {
+    animation-name: none;
+    animation-duration: 0s;
+    animation-timing-function: ease;
+    animation-delay: 0s;
+    animation-iteration-count: 1;
+    animation-direction: normal;
+    animation-fill-mode: none;
+    animation-play-state: running;
+    animation-timeline: auto;
+    animation: name duration timing-function delay iteration-count direction fill-mode; 
+}
+
+/* Object-fit & Background-image */
+* {
+    object-fit: cover;                    /* cover | contain | fill | none | scale-down */
+    object-position: position;            /* top | bottom | center | left | right | x-start | x-end | y-start | y-end */
+    background-image: url("");            /* to avoid image download from website */
+    background-position: position;        /* top | bottom | center | left | right | x-start | x-end | y-start | y-end */
+    background-repeat: no-repeat;         /* repeat | repeat-x | repeat-y | space | round | no-repeat */
+    background-clip: border-box;          /* border-box | padding-box | content-box | text | border-area */
+}
+
+/* CSS Filters */
+* {
+    filter: blur();                 /* blur() | brightness() | contrast() | drop-shadow() | grayscale() | hue-rotate() | invert() | opacity() | saturate() | sepia() */
+    backdrop-filter: blur();        /* blur() | brightness() | contrast() | drop-shadow() | grayscale() | hue-rotate() | invert() | opacity() | saturate() | sepia() */
+}
